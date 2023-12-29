@@ -25,6 +25,8 @@ if (!$result) {
     <div class="container my-5">
         <h2>Liste des Salles</h2>
         <a class="btn btn-primary btn-sm" href="createsalle.php" role="button">Ajouter une nouvelle salle</a>
+        <a class="btn btn-danger" href="/PHPPROJECT/Authentification/dashboard.php">dashboard</a>
+
     </div>
 
     <?php

@@ -20,7 +20,7 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <div class="container my-5">
         <h2>Welcome, <?php echo $_SESSION['username']; ?>!</h2>
-        <a class="btn btn-danger" href="logout.php">Logout</a>
+        <a class="btn btn-danger" href="/PHPPROJECT/Authentification/logout.php">Logout</a>
         <a class="btn btn-primary" href="/PHPPROJECT/CrudDepartement/index.php">Go to Department Page</a>
         <a class="btn btn-primary" href="/PHPPROJECT/CrudFiliere/indexfiliere.php">Go to filiere Page</a>
         <a class="btn btn-primary" href="/PHPPROJECT/CrudEnseignant/indexenseignant.php">Go to Enseignant Page</a>

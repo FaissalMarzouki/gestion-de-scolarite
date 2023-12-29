@@ -30,7 +30,7 @@ if (isset($_GET['logout'])) {
     <div class="Container my -5">
      <h2> La liste des  departements</h2>
      <a class="btn btn-primary btn-sm" href="/PHPPROJECT/CrudDepartement/create.php" role="button">Ajouter un nouveau departement </a>
-     <a class="btn btn-danger btn-sm" href="?logout=true" role="button">Déconnexion</a>
+     <a class="btn btn-danger" href="/PHPPROJECT/Authentification/dashboard.php">dashboard</a>
      </div>
      <br>
      <?php

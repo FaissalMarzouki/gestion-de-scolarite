@@ -27,6 +27,7 @@ if (!$result) {
     <div class="container my-5">
         <h2>Liste des Enseignants</h2>
         <a class="btn btn-primary btn-sm" href="createenseignant.php" role="button">Ajouter un nouvel enseignant</a>
+        <a class="btn btn-danger" href="/PHPPROJECT/Authentification/dashboard.php">dashboard</a>
 
         <?php
         if (!empty($successMessage)) {

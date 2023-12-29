@@ -25,6 +25,8 @@ if (!$result) {
     <div class="container my-5">
         <h2>Liste des Matières</h2>
         <a class="btn btn-primary btn-sm" href="creatematiere.php" role="button">Ajouter une nouvelle matière</a>
+        <a class="btn btn-danger" href="/PHPPROJECT/Authentification/dashboard.php">dashboard</a>
+
     </div>
 
     <?php
