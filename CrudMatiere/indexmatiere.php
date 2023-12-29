@@ -1,54 +1,64 @@
+<?php
+try {
+    $connection = new PDO("mysql:host=localhost;dbname=gestion de scolarite", 'fayssal', '1447');
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+$sql = "SELECT * FROM matiere";
+$result = $connection->query($sql);
+
+if (!$result) {
+    die("Invalid query: " . $connection->errorInfo()[2]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecole</title>
+    <title>Liste des Matières</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container my-5">
-        <h2>La liste des matières</h2>
-        <a class="btn btn-primary btn-sm" href="/PHPPROJECT/create.php" role="button">Ajouter une nouvelle matière</a>
+        <h2>Liste des Matières</h2>
+        <a class="btn btn-primary btn-sm" href="creatematiere.php" role="button">Ajouter une nouvelle matière</a>
     </div>
-    <br>
+
+    <?php
+    if (!empty($successMessage)) {
+        echo "
+        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+            <strong>$successMessage</strong>
+            <button type='button' class='button-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+        ";
+    }
+    ?>
+
     <table class="table">
         <thead>
             <tr>
-                <th>Identifiant de la matière</th>
-                <th>Nom de la matière</th>
-                <th>Description de la matière</th>
-                <th>Actions</th>
+                <th>ID Matière</th>
+                <th>Nom Matière</th>
+                <th>Credits</th>
+                <th>Opération</th>
             </tr>
         </thead>
         <tbody>
-            <?php
-            
-
-            try {
-                $connection = new PDO("mysql:host=localhost;dbname=gestion de scolarite", 'fayssal', '1447');
-                $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                $sql = "SELECT * FROM Matiere";
-                $stmt = $connection->query($sql);
-
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    echo "
-                    <tr>
-                        <td>{$row['ID_MATIERE']}</td>
-                        <td>{$row['NOM_MATIERE']}</td>
-                        <td>{$row['CREDITS']}</td>
-                        <td>
-                            <a class='btn btn-primary btn-sm' href='/PHPPROJECT/edit.php?ID_MATIERE={$row['ID_MATIERE']}'>Modifier</a>
-                            <a class='btn btn-danger btn-sm' href='/PHPPROJECT/delete.php?ID_MATIERE={$row['ID_MATIERE']}'>Supprimer</a>
-                        </td>
-                    </tr>";
-                }
-            } catch (PDOException $e) {
-                echo "Erreur : " . $e->getMessage();
-            }
-            $connection = null;
-            ?>
+            <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)) : ?>
+                <tr>
+                    <td><?php echo $row['ID_MATIERE']; ?></td>
+                    <td><?php echo $row['NOM_MATIERE']; ?></td>
+                    <td><?php echo $row['CREDITS']; ?></td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="editmatiere.php?ID_MATIERE=<?php echo $row['ID_MATIERE']; ?>">Modifier</a>
+                        <a class="btn btn-danger btn-sm" href="deletematiere.php?ID_MATIERE=<?php echo $row['ID_MATIERE']; ?>">Supprimer</a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
         </tbody>
     </table>
 </body>

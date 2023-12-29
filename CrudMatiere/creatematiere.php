@@ -1,57 +1,34 @@
 <?php
-
-/* declaration des variable php avec  la connect  a la base de donnee*/
-        $servername="localhost";
-        $username="root";
-        $password="Benoit@2001";
-        $databasename="PHPPROJECT";
-
-        $connection = new mysqli($servername, $username, $password, $databasename);
-
-
-
-$identifiant="";
-$departement="";
-$description="";
-
-$errorMessage="";
-$sucessMessage="";
-
-if($_SERVER['REQUEST_METHOD']=='POST')
-{
-    $identifiant=$_POST["identifiant"];
-    $departement=$_POST["departement"];
-    $descriptin=$_POST["description"]; 
+try {
+   $connection = new PDO("mysql:host=localhost;dbname=gestion de scolarite", 'fayssal', '1447');
+   $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+   die('Erreur : ' . $e->getMessage());
 }
+$successMessage = $errorMessage = '';
 
-do{
- if(empty($identifiant)||empty($departement)||empty($description))
- {
-    $errorMessage="Tous les champs sont obliigatoires";
-    break;
- }
-  
- // add new value to the data base;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id_matiere = $_POST['id_matiere'];
+    $nom_matiere = $_POST['nom_matiere'];
+    $credits = $_POST['credits'];
 
- $sql= "INSERT INTO Departement VALUES ('$identifiant','$departement','$description');";
-   $result=$connection->query($sql);
-   if(!$result)
-   {
-    $errorMessage="Invalid query: " .$connection->error;
-    break;
-   }
-    
- $identifiant="";
- $departement="";
- $description="";
- 
+    try {
+        $stmt = $connection->prepare("INSERT INTO matiere (ID_MATIERE, NOM_MATIERE, CREDITS) VALUES (?, ?, ?)");
+        $stmt->execute([$id_matiere, $nom_matiere, $credits]);
 
- $sucessMessage="Le  departement a ete ajouter avec sucess";
- 
- header("location: /PHPPROJECT/index.php");
-  exit;
-
-} while(false);
+        $rowCount = $stmt->rowCount();
+        if ($rowCount > 0) {
+            $successMessage = "Enregistrement ajouté avec succès";
+            // Rediriger vers la liste des matières après l'ajout réussi
+            header("Location: indexmatiere.php");
+            exit();
+        } else {
+            $errorMessage = "Aucun enregistrement ajouté.";
+        }
+    } catch (PDOException $e) {
+        $errorMessage = "Erreur d'insertion : " . $e->getMessage();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -59,68 +36,49 @@ do{
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion d'ecole</title>
-    <link rel="Stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <scipt scr="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></scrip>
+    <title>Ajouter une nouvelle Matière</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <div  class="container my-5"> 
-     <h2>Ajout d'un nouveau departement</h2>
+    <div class="container my-5">
+        <h2>Ajouter une nouvelle Matière</h2>
 
-     <?php
-     if(!empty($errorMessage)) 
-     {
-        echo"
-           <div class='alert alert- warning alert-dismissible fade show' role='alert'> 
-           <strong>$errorMessage</strong>
-           <button type ='button' class='buton-close' data-bs-dismiss='alert' aria-label='Close'></button>
-           </div>
-        ";
-     }
-     ?>
-      <from method="post"> 
-        <div class="row mb-3"> 
-           <label class="col-sm-3 col-form-label">identifiant du departement</label>
-            <div class ="col-sm-6">
-             <input type="text" class="form-control" name="identifiant" value="<?php echo $identifiant?>">        
-        </div>
-        </div>
-        <div class="row mb-3"> 
-           <label class="col-sm-3 col-form-label">departement</label>
-            <div class ="col-sm-6">
-             <input type="text" class="form-control" name="departement" value="<?php echo $departement?>">        
-        </div>
-        </div>
-        <div class="row mb-3"> 
-           <label class="col-sm-3 col-form-label">description</label>
-            <div class ="col-sm-6">
-            <input type="text" class="form-control" name="description" value="<?php echo $description?>">  
-            </div>
-        </div>
-
-        <!--  display succes message-->
         <?php
-     if(!empty($sucessMessage)) 
-     {
-        echo"
-           <div class='alert alert- warning alert-dismissible fade show' role='alert'> 
-           <strong>$sucessMessage</strong>
-           <button type ='button' class='buton-close' data-bs-dismiss='alert' aria-label='close'></button>
-           </div>
-        ";
-     }
-     ?>
+        if (!empty($errorMessage)) {
+            echo "
+                <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                    <strong>$errorMessage</strong>
+                    <button type='button' class='button-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>
+            ";
+        }
+        ?>
 
-        <div class="row mb-3"> 
-           
-            <div class ="offset-sm-3 col-sm-3 d-grid">
-             <button type="submit" class="btn btn-primary">Submit</button>        
+        <form method="post">
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">ID Matière</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="id_matiere" required>
+                </div>
             </div>
-            <div class ="col-sm-3 d-grid">
-             <a class ="btn btn-outline-primary" href="/PHPPROJECT/index.php" role="button">Cancel</a>        
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Nom Matière</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="nom_matiere" required>
+                </div>
             </div>
-        </div>
-      </form>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Crédits</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="credits" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="offset-sm-3 col-sm-6 d-grid">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>
