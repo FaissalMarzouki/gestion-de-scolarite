@@ -109,7 +109,7 @@ constraint FK_DISPENSER foreign key (ID_SALLE)
       references SALLE (ID_SALLE),   -- creation de clé etrangère en utilisant les contrainte
 
  FOREIGN KEY (ID_SALLE) REFERENCES SALLE (ID_SALLE) -- autre methode de creation de foreign key 
-
+) ;
 /*Ajout des clé etrangère sur differents tables */
 
 
