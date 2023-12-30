@@ -14,18 +14,6 @@ create table DEPARTEMENT
     DESCRIPTION_D         VARCHAR(100)
 );
 
-/*==============================================================*/
-/* Table: DISPENSER                                              */
-/*==============================================================*/
-create table DISPENSER
-(
-    ID_SALLE             VARCHAR(100)         not null,
-    ID_MATIERE           VARCHAR(100)         not null,
-constraint FK_DISPENSER foreign key (ID_SALLE)
-      references SALLE (ID_SALLE),   -- creation de clé etrangère en utilisant les contrainte
-
- FOREIGN KEY (ID_SALLE) REFERENCES SALLE (ID_SALLE) -- autre methode de creation de foreign key 
-
  /*Par suite on creera les clé étrangère après la creattion de toute les table c a d avec ALTER table ADD constraint fk_....*/
 );
 
@@ -110,6 +98,17 @@ create table SALLE
     CAPPACITE            INTEGER,
 constraint PK_SALLE primary key (ID_SALLE)
 );
+/*==============================================================*/
+/* Table: DISPENSER                                              */
+/*==============================================================*/
+create table DISPENSER
+(
+    ID_SALLE             VARCHAR(100)         not null,
+    ID_MATIERE           VARCHAR(100)         not null,
+constraint FK_DISPENSER foreign key (ID_SALLE)
+      references SALLE (ID_SALLE),   -- creation de clé etrangère en utilisant les contrainte
+
+ FOREIGN KEY (ID_SALLE) REFERENCES SALLE (ID_SALLE) -- autre methode de creation de foreign key 
 
 /*Ajout des clé etrangère sur differents tables */
 
