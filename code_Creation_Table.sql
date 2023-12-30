@@ -1,8 +1,8 @@
 /*==============================================================*/
 /* BD_MINI_PROJET       GESTION DE SCOLARITE                   */
-/* WITH II:BDCC , II:CCN , GLSID , STUDENTS                    */
+/* WITH II:BDCC , II:CCN, STUDENTS                    */
 /*==============================================================*/
-
+use gestion_de_scolarite;
 
 /*==============================================================*/
 /* Table: DEPARTEMENT                                           */
@@ -21,8 +21,6 @@ create table DISPENSER
 (
     ID_SALLE             VARCHAR(100)         not null,
     ID_MATIERE           VARCHAR(100)         not null,
-constraint PK_DISPENSER primary key (ID_SALLE, ID_MATIERE), -- on peut aussi creer les clé primaire avec les contrainte
-
 constraint FK_DISPENSER foreign key (ID_SALLE)
       references SALLE (ID_SALLE),   -- creation de clé etrangère en utilisant les contrainte
 
@@ -50,8 +48,7 @@ create table ENSEIGNANT
 create table ENSEIGNER
 (
     ID_ENSEIGNANT        VARCHAR(100)         not null,
-    ID_MATIERE           VARCHAR(100)         not null,
-constraint PK_ENSEIGNER primary key (ID_ENSEIGNANT, ID_MATIERE)
+    ID_MATIERE           VARCHAR(100)         not null
 );
 
 /*==============================================================*/
@@ -61,7 +58,7 @@ create table ETUDIANT
 (
     ID_ETUDIANT          VARCHAR(100)         not null,
     ID_SALLE             VARCHAR(100),
-    ID_CLASSE            VARCHAR(100)         not null,
+    ID_Filiere            VARCHAR(100)         not null,
     NOM                  VARCHAR(100),
     PRENOM               VARCHAR(100),
     DATE_DE_NAISSANCE    DATE,
@@ -77,9 +74,7 @@ create table EVALUER
 (
     ID_MATIERE           VARCHAR(100)         not null,
     ID_ETUDIANT          VARCHAR(100)         not null,
-    NOTE                 FLOAT,
-constraint PK_EVALUER primary key (ID_MATIERE, ID_ETUDIANT)
-
+    NOTE                 FLOAT
 );
 
 /*==============================================================*/
@@ -87,11 +82,11 @@ constraint PK_EVALUER primary key (ID_MATIERE, ID_ETUDIANT)
 /*==============================================================*/
 create table FILIERE
 (
-    ID_CLASSE            VARCHAR(100)         not null,
+    ID_Filere            VARCHAR(100)         not null,
     ID_DEPARTEMENT       VARCHAR(100)         not null,
     NOM_FILIERE          VARCHAR(100),
     NIVEAU               VARCHAR(11),
-constraint PK_FILIERE primary key (ID_CLASSE)
+constraint PK_FILIERE primary key (ID_Filere)
 );
 
 /*==============================================================*/
@@ -136,16 +131,17 @@ alter table ENSEIGNER
       references MATIERE (ID_MATIERE);
 
 alter table ETUDIANT
-   add constraint FK_ETUDIANT_APPARTENI_FILIERE foreign key (ID_CLASSE)
-      references FILIERE (ID_CLASSE);
+   add constraint FK_ETUDIANT_APPARTENI_FILIERE foreign key (ID_Filiere)
+      references FILIERE (ID_Filiere);
 
 alter table ETUDIANT
-   add constraint FK_ETUDIANT_PRESENTE_SALLE foreign key (ID_SALLE)
-      references SALLE (ID_SALLE);
+   add constraint FK_ETUDIANT_PRESENTE_SALLE foreign key (ID_Salle)
+      references SALLE (ID_Salle);
 
 alter table EVALUER
    add constraint FK_EVALUER_EVALUER_MATIERE foreign key (ID_MATIERE)
       references MATIERE (ID_MATIERE);
+
 
 alter table EVALUER
    add constraint FK_EVALUER_EVALUER2_ETUDIANT foreign key (ID_ETUDIANT)
@@ -154,4 +150,3 @@ alter table EVALUER
 alter table FILIERE
    add constraint FK_FILIERE_AVOIIR_DEPARTEM foreign key (ID_DEPARTEMENT)
       references DEPARTEMENT (ID_DEPARTEMENT);
-
