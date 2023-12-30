@@ -1,10 +1,6 @@
 <?php
-try {
-    $connection = new PDO("mysql:host=localhost;dbname=gestion de scolarite", 'fayssal', '1447');
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+include 'C:/wamp64/www/PHPPROJECT/connection_db.php';
+
 $successMessage = $errorMessage = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

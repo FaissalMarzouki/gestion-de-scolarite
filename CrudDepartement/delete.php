@@ -10,21 +10,12 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 
-$servername = "localhost";
-$username = "fayssal";
-$password = "1447";
-$databasename = "gestion de scolarite";
 
 // Vérifier si l'ID_DEPARTEMENT est défini dans l'URL
 if (isset($_GET['ID_DEPARTEMENT'])) {
     $identifiant = $_GET['ID_DEPARTEMENT'];
+    include 'C:/wamp64/www/PHPPROJECT/connection_db.php';
 
-    try {
-        $connection = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
-        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
 
     // Utiliser une requête préparée pour éviter les injections SQL
     $stmt = $connection->prepare("DELETE FROM departement WHERE ID_DEPARTEMENT = :identifiant");

@@ -2,12 +2,7 @@
 session_start();
 
 
-try {
-    $connection = new PDO("mysql:host=localhost;dbname=gestion de scolarite", 'fayssal', '1447');
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+include 'C:/wamp64/www/PHPPROJECT/connection_db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -22,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Login successful, store user information in the session
         $_SESSION['user_id'] = $user['Id_user'];
         $_SESSION['username'] = $user['username'];
-        header("Location: dashboard.php"); // Redirect to the dashboard or another secured page
+        header("Location: dashboard.php");
         exit();
     } else {
         // Login failed

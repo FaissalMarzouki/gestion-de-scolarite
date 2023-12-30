@@ -10,9 +10,8 @@ if (!isset($_SESSION['user_id'])) {
 
 // Traitement du formulaire d'ajout
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    try {
-        $connection = new PDO("mysql:host=localhost;dbname=gestion de scolarite", 'fayssal', '1447');
-        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    include 'C:/wamp64/www/PHPPROJECT/connection_db.php';
 
         $id_salle = $_POST['id_salle'];
         $numero = $_POST['numero'];
@@ -24,9 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $successMessage = "La salle a été ajoutée avec succès!";
         header("Location: indexsalle.php");
-    } catch (PDOException $e) {
-        $errorMessage = "Erreur d'insertion : " . $e->getMessage();
-    }
+    
 }
 ?>
 

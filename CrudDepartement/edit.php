@@ -7,17 +7,8 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: /PHPPROJECT/Authentification/login.php");
     exit();
 }
-$servername = "localhost";
-$username = "fayssal";
-$password = "1447";
-$databasename = "gestion de scolarite";
+include 'C:/wamp64/www/PHPPROJECT/connection_db.php';
 
-try {
-    $connection = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur : ' . $e->getMessage());
-}
 
 $identifiant = "";
 $departement = "";

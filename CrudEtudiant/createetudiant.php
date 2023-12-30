@@ -1,10 +1,6 @@
 <?php
-try {
-    $connection = new PDO("mysql:host=localhost;dbname=gestion de scolarite", 'fayssal', '1447');
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+include 'C:/wamp64/www/PHPPROJECT/connection_db.php';
+
 
 $successMessage = $errorMessage = '';
 
@@ -112,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                 </div>
                 <div class="col-sm-3 d-grid">
-                    <a class="btn btn-outline-primary" href="index.php" role="button">Annuler</a>
+                    <a class="btn btn-outline-primary" href="indexetudiant.php" role="button">Annuler</a>
                 </div>
             </div>
         </form>
