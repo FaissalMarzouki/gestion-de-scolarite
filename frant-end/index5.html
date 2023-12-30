@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="Gestion de scolarité - Ajouter un nouveau étudiant">
+    <meta name="author" content="Votre Nom ou Nom de l'école">
+    <meta name="keywords" content="scolarité, école, administration">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--Meta Responsive tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--Custom style.css-->
+    <link rel="stylesheet" href="assets/css/quicksand.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    
+    <title>Modifier un nouveau</title>
+</head>
+<body class="login-body">
+    <div class="row header shadow-sm">
+        <div class="col-sm-3 pl-0 text-center header-logo">
+           <div class="bg-theme mr-3 pt-3 pb-2 mb-0" >
+                <h3 class="logo"><a href="index2.html" class="text-secondary logo"><i class="fa fa-book"></i> Gestion<span class="small">Scolarité</span></a></h3>
+           </div>
+        </div>
+    </div>
+    <center><div id="main"><div>Modifier</div>
+        <select id="userType">
+            <option value="">--Veuillez choisir une option--</option>
+            <option value="students">Étudiant</option>
+            <option value="teachers">Enseignant</option>
+            <option value="departement">Departement</option>
+            <option value="filiere">Filiere</option>
+            <option value="matiere">Matiere</option>
+            <option value="salle">Salle</option>           
+            <option value="enseignement">Enseignement</option>
+            <option value="dispenses">Dispenses</option>
+            <option value="evaluation">Evaluation</option>
+        </select>
+    </div></center>
+    
+        <div class="container-fluid login-wrapper">
+            <div class="login-box" id="formContainer"></div>
+        </div>
+        
+    <!-- Page JavaScript Files-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <!--Popper JS-->
+    <script src="assets/js/popper.min.js"></script>
+    <!--Bootstrap-->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!--Custom Js Script-->
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userTypeSelect = document.getElementById('userType');
+        const formContainer = document.getElementById('formContainer');
+
+        /*userTypeSelect.addEventListener('mousedown', function(){
+            formContainer.innerHTML='';
+        });*/
+
+        userTypeSelect.addEventListener('change', function() {
+            const selectedUserType = userTypeSelect.value;
+
+            // Supprime le contenu existant du conteneur du formulaire
+            formContainer.innerHTML = '';
+
+            // Génère le formulaire correspondant au type d'utilisateur sélectionné
+            if (selectedUserType === 'students') {
+                formContainer.innerHTML = `
+                    <h1 class="text-center_mb"><i class="fa fa-users"></i>Étudiant Existant</h1>    
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 login-box-form p-4">
+                            <form action="#" class="mt-2">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Etudiant" name="ID_etd">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Salle" name="ID_Salle">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Filiere" name="ID_Filere">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Nom" name="Nom">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Prénom" name="Prénom">
+                                <input type="date" class="form-control mt-0 mb-3" placeholder="Date de naissance" name="Date_naissance">
+                                <input type="date" class="form-control mt-0 mb-3" placeholder="Date de présence" name="Date_presence">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Adresse" name="adresse">
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&lt;</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&gt;</button>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">Enregistrer</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                `;
+            } else if (selectedUserType === 'teachers') {
+                formContainer.innerHTML = `
+                    <h1 class="text-center_mb"><i class="fa fa-user"></i>Enseignant Existant</h1>    
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 login-box-form p-4">
+                            <form action="#" class="mt-2">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Enseignant" name="ID_en">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Departement" name="ID_Dprt">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Nom" name="Nom">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Prénom" name="Prénom">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Specialite" name="Specialité">
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&lt;</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&gt;</button>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">Enregistrer</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>  
+                `;
+            }else if(selectedUserType === 'departement'){
+                formContainer.innerHTML = `
+                <h1 class="text-center_mb"><i class="fas fa-building"></i>Departement Existant</h1>    
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 login-box-form p-4">
+                            <form action="#" class="mt-2">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Departement" name="ID_depar">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Nom Departement" name="Nom_dep">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Description" name="Desc">
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&lt;</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&gt;</button>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">Enregistrer</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div
+                `;
+            }else if(selectedUserType === 'filiere'){
+                formContainer.innerHTML = `
+                <h1 class="text-center_mb"><i class="fas fa-graduation-cap"></i>Filiere Existante</h1>    
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 login-box-form p-4">
+                            <form action="#" class="mt-2">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Filiere" name="ID_fil">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Departement" name="ID_dep">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Nom FIliere" name="Nom_fil">                              
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&lt;</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&gt;</button>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">Enregistrer</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div
+                `;
+            }else if(selectedUserType === 'matiere'){
+                formContainer.innerHTML = `
+                <h1 class="text-center_mb"><i class="fas fa-book-open"></i>Matiere Existante</h1>    
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 login-box-form p-4">
+                            <form action="#" class="mt-2">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Matiere" name="Id_mat">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Intitulé Matiere" name="Intitulé_mat">
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&lt;</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&gt;</button>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">Enregistrer</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div
+                `;
+            }else if(selectedUserType === 'salle'){
+                formContainer.innerHTML = `
+                <h1 class="text-center_mb"><i class="fas fa-door-open"></i>Salle Existante</h1>    
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 login-box-form p-4">
+                            <form action="#" class="mt-2">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Salle" name="Id-sal">                                
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="Intitulé Salle" name="Intitulé_s">
+                                <input type="number" class="form-control mt-0 mb-3" placeholder="Capacité Salle" name=cap_Salle>
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&lt;</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&gt;</button>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">Enregistrer</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div> 
+                `;
+            }else if(selectedUserType === 'enseignement'){
+                formContainer.innerHTML = `
+                <h1 class="text-center_mb"><i class="fas fa-chalkboard-teacher"></i>Enseignement Existant</h1>    
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 login-box-form p-4">
+                            <form action="#" class="mt-2">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Enseignant" name="ID_ens">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Matiere" name="ID_mat">
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&lt;</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&gt;</button>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">Enregistrer</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div> 
+                `;
+            }else if(selectedUserType ==='dispenses'){
+                formContainer.innerHTML = `
+                <h1 class="text-center_mb"><i class="fas fa-chalkboard-teacher"></i> Dispense Existante</h1>    
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 login-box-form p-4">
+                            <form action="#" class="mt-2">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Salle" name="ID_ds">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Matiere" name="ID_mat">
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&lt;</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&gt;</button>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">Enregistrer</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div> 
+                `;
+            }else if(selectedUserType === 'evaluation'){
+                formContainer.innerHTML = `
+                <h1 class="text-center_mb"><i class="fas fa-poll"></i>Evaluation Existante</h1>    
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 login-box-form p-4">
+                            <form action="#" class="mt-2">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Matiere" name="ID_mat">
+                                <input type="text" class="form-control mt-0 mb-3" placeholder="ID Étudiant" name="Id_etd">
+                                <input type="number" class="form-control mt-0 mb-3" placeholder="Note" name="Note">
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&lt;</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">&gt;</button>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="button" class="btn btn-theme p-2 mb-1 d-block w-100" onclick="">Enregistrer</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div> 
+                `;
+            }
+        });
+    });
+</script>
+</html>

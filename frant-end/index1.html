@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="Gestion de scolarité - Connexion administrateur">
+    <meta name="author" content="Votre Nom ou Nom de l'école">
+    <meta name="keywords" content="scolarité, école, administration">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--Meta Responsive tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--Custom style.css-->
+    <link rel="stylesheet" href="assets/css/quicksand.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    
+    <title>Gestion de Scolarité - Connexion Administrateur</title>
+</head>
+<body class="login-body">
+    <!--Login Wrapper-->
+    <div class="container-fluid login-wrapper">    
+        <div class="login-box_1">
+            <h1 class="text-center mb-5"><i class="fa fa-book text-primary"></i> Gestion de Scolarité</h1>    
+            <div class="row">
+             <div class="col-md-12 col-sm-12 col-12 login-box-form p-4">
+                    <h3 class="mb-2">Connexion Administrateur</h3>
+                     <small class="text-muted bc-description">Veuillez vous identifier avec vos informations d'administration</small>
+                    <form action="#" class="mt-2">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control mt-0" placeholder="Nom d'utilisateur" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                            </div>
+                            <input type="password" class="form-control mt-0" placeholder="Mot de passe" aria-label="Password" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="form-group">
+                            <!-- Ajout d'un événement onclick pour la redirection -->
+                            <button type="button" class="btn btn-theme btn-block p-2 mb-1" onclick="validatePassword()">Connexion</button>
+                            <a href="forgot_pass.html">
+                                <small class="text-theme"><strong>Mot de passe oublié ?</strong></small>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <!--Login Wrapper-->
+
+    <!-- Page JavaScript Files-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <!--Popper JS-->
+    <script src="assets/js/popper.min.js"></script>
+    <!--Bootstrap-->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Script JavaScript pour la redirection -->
+    <script>
+        function validatePassword() {
+            // Récupération du mot de passe entré par l'utilisateur
+            const enteredPassword = document.querySelector('input[type="password"]').value;
+
+            // Vérification du mot de passe
+            if (enteredPassword === "1234567") {
+                // Redirection vers index2.html après vérification réussie
+                window.location.href = "index2.html";
+            } else {
+                // Affichage d'un message d'erreur si le mot de passe est incorrect
+                alert("Mot de passe incorrect. Veuillez réessayer.");
+            }
+        }
+    </script>
+    <!--Custom Js Script-->
+</body>
+</html>

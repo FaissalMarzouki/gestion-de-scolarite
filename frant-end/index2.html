@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="" >
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--Meta Responsive tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Favicon Icon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--Custom style.css-->
+    <link rel="stylesheet" href="assets/css/quicksand.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <!--Animate CSS-->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!--Chartist CSS-->
+    <link rel="stylesheet" href="assets/css/chartist.min.css">
+    <!--Map-->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.2.css">
+    <!--Bootstrap Calendar-->
+    <link rel="stylesheet" href="assets/js/calendar/bootstrap_calendar.css">
+    <!--Nice select -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <title>Gestion de Scolarité</title>
+  </head>
+  <body class="acceuil_index2">
+    <!--Page loader-->
+    <div class="loader-wrapper">
+        <div class="loader-circle">
+            <div class="loader-wave"></div>
+        </div>
+    </div>
+    <!--Page loader-->
+    
+    <!--Page Wrapper-->
+
+    <div class="container-fluid">
+
+        <!--Header-->
+        <div class="row header shadow-sm">
+            
+            <!--Logo-->
+            <div class="col-sm-3 pl-0 text-center header-logo">
+               <div class="bg-theme mr-3 pt-3 pb-2 mb-0">
+                    <h3 class="logo"><a href="#" class="text-secondary logo"><i class="fa fa-book"></i> Gestion<span class="small">Scolarité</span></a></h3>
+               </div>
+            </div>
+            <!--Logo-->
+
+            <!--Header Menu-->
+            <div class="col-sm-9 header-menu pt-2 pb-0">
+                <div class="row">
+                    
+                    <!--Menu Icons-->
+                    <div class="col-sm-4 col-8 pl-0">
+                        <!--Toggle sidebar-->
+                        <span class="menu-icon" onclick="toggle_sidebar()">
+                            <span id="sidebar-toggle-btn"></span>
+                        </span>
+                        <!--Toggle sidebar-->
+                        <!--Notification icon-->
+                    </div>
+                    <!--Menu Icons-->
+                    <!--Search box and avatar-->
+                </div>    
+            </div>
+            <!--Header Menu-->
+        </div>
+        <!--Header-->
+
+        <!--Main Content-->
+
+        <div class="row main-content">
+            <!--Sidebar left--> 
+            <div class="col-sm-3 col-xs-6 sidebar pl-0">
+                <div class="inner-sidebar mr-3">
+                    <!--Image Avatar-->
+                    <div class="avatar text-center">
+                        <img src="assets/img/th.jpeg" alt="" class="rounded-circle" />
+                        <p><strong>Administrateur</strong></p>
+                       <!-- <span class="text-primary small"><strong>UI/UX Designer</strong></span> -->
+                    </div>
+                    <!--Image Avatar-->
+
+                    <!--Sidebar Navigation Menu-->
+                    <div class="sidebar-menu-container">
+                        <ul class="sidebar-menu mt-4 mb-4">
+                            <li class="parent">
+                                <a href="#" onclick="toggle_menu('etudiant'); return false" class=""><i class="fa fa-users"> </i>
+                                    <span class="none">Etudiants <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                                </a>
+                                <ul class="children" id="etudiant">
+                                    <li class="child"><a href="index3.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Ajouter</a></li>
+                                    <li class="child"><a href="index4.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Supprimer</a></li>
+                                    <li class="child"><a href="index5.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Modifier</a></li>
+                                    <li class="child"><a href="index6.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Voir</a></li>
+                                </ul>
+                            </li>
+                            <li class="parent">
+                                <a href="#" onclick="toggle_menu('ensg'); return false" class=""><i class="fas fa-user"> </i>
+                                    <span class="none">Enseignants <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                                </a>
+                                <ul class="children" id="ensg">
+                                    <li class="child"><a href="index3.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Ajouter</a></li>
+                                    <li class="child"><a href="index4.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Supprimer</a></li>
+                                    <li class="child"><a href="index5.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Modifier</a></li>
+                                    <li class="child"><a href="index6.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Voir</a></li>
+                                </ul>
+                            </li> 
+                            <li class="parent">
+                                <a href="#" onclick="toggle_menu('departement'); return false" class=""><i class="fas fa-building"> </i>
+                                    <span class="none">Département <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                                </a>
+                                <ul class="children" id="departement">
+                                    <li class="child"><a href="index3.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Ajouter</a></li>
+                                    <li class="child"><a href="index4.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Supprimer</a></li>
+                                    <li class="child"><a href="index5.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Modifier</a></li>
+                                    <li class="child"><a href="index6.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Voir</a></li>
+                                </ul>
+                            </li>               
+                            <li class="parent">
+                                <a href="#" onclick="toggle_menu('Ensgmt'); return false" class=""><i class="fas fa-chalkboard-teacher"> </i>
+                                    <span class="none">Enseignement <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                                </a>
+                                <ul class="children" id="Ensgmt">
+                                    <li class="child"><a href="index3.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Ajouter</a></li>
+                                    <li class="child"><a href="index4.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Supprimer</a></li>
+                                    <li class="child"><a href="index5.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Modifier</a></li>
+                                    <li class="child"><a href="index6.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Voir</a></li>
+                                </ul>
+                            </li> 
+                            <li class="parent">
+                                <a href="#" onclick="toggle_menu('Evaluation'); return false" class=""><i class="fas fa-poll"> </i>
+                                    <span class="none">Evaluation <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                                </a>
+                                <ul class="children" id="Evaluation">
+                                    <li class="child"><a href="index3.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Ajouter</a></li>
+                                    <li class="child"><a href="index4.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Supprimer</a></li>
+                                    <li class="child"><a href="index5.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Modifier</a></li>
+                                    <li class="child"><a href="index6.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Voir</a></li>
+                                </ul>
+                            </li>                            
+                            <li class="parent">
+                                <a href="#" onclick="toggle_menu('Filiere'); return false" class=""><i class="fas fa-graduation-cap"> </i>
+                                    <span class="none">Filière <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                                </a>
+                                <ul class="children" id="Filiere">
+                                    <li class="child"><a href="index3.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Ajouter</a></li>
+                                    <li class="child"><a href="index4.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Supprimer</a></li>
+                                    <li class="child"><a href="index5.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Modifier</a></li>
+                                    <li class="child"><a href="index6.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Voir</a></li>
+                                </ul>
+                            </li>   
+                            <li class="parent">
+                                <a href="#" onclick="toggle_menu('matiere'); return false" class=""><i class="fas fa-book-open"> </i>
+                                    <span class="none">Matières <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                                </a>
+                                <ul class="children" id="matiere">
+                                    <li class="child"><a href="index3.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Ajouter</a></li>
+                                    <li class="child"><a href="index4.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Supprimer</a></li>
+                                    <li class="child"><a href="index5.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Modifier</a></li>
+                                    <li class="child"><a href="index6.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Voir</a></li>
+                                </ul>
+                            </li>   
+                            <li class="parent">
+                                <a href="#" onclick="toggle_menu('salle'); return false" class=""><i class="fas fa-door-open"> </i>
+                                    <span class="none">Salles <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                                </a>
+                                <ul class="children" id="salle">
+                                    <li class="child"><a href="index3.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Ajouter</a></li>
+                                    <li class="child"><a href="index4.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Supprimer</a></li>
+                                    <li class="child"><a href="index5.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Modifier</a></li>
+                                    <li class="child"><a href="index6.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Voir</a></li>
+                                </ul>
+                            </li>                         
+                            <li class="parent">
+                                <a href="#" onclick="toggle_menu('dispenses'); return false" class=""><i class="fas fa-chalkboard-teacher"> </i>
+                                    <span class="none">Dispenses <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                                </a>
+                                <ul class="children" id="dispenses">
+                                    <li class="child"><a href="index3.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Ajouter</a></li>
+                                    <li class="child"><a href="index4.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Supprimer</a></li>
+                                    <li class="child"><a href="index5.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Modifier</a></li>
+                                    <li class="child"><a href="index6.html" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Voir</a></li>
+                                </ul>
+                            </li>  
+                            
+                            <li class="parent">
+                                    <span class="none"><a class="dropdown-item" href="index1.html"><i class="fa fa-power-off pr-2"></i> Logout</a></span>  
+                        </ul>
+                    </div>
+                    <!--Sidebar Naigation Menu-->
+                </div>
+            </div>
+            <!--Sidebar left-->
+
+            <!--Content right-->
+            <div class="col-sm-9 col-xs-12 content pt-3 pl-0">
+                <h5 class="mb-3" ><strong>Accueil</strong></h5>
+                
+                <!--Dashboard widget-->
+                <div class="mt-1 mb-3 button-container">
+                    <div class="row pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
+                            <div class="bg-white border shadow">
+                                <div class="media p-4">
+                                    <div class="align-self-center mr-3 rounded-circle notify-icon bg-theme">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="media-body pl-2">
+                                        <h3 class="mt-0 mb-0"><strong>10</strong></h3>
+                                        <p><small class="text-muted bc-description">Filières</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
+                            <div class="bg-white border shadow">
+                                <div class="media p-4">
+                                    <div class="align-self-center mr-3 rounded-circle notify-icon bg-danger">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="media-body pl-2">
+                                        <h3 class="mt-0 mb-0"><strong>45</strong></h3>
+                                        <p><small class="text-muted bc-description">Enseignants</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
+                            <div class="bg-white border shadow">
+                                <div class="media p-4">
+                                    <div class="align-self-center mr-3 rounded-circle notify-icon bg-theme">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="media-body pl-2">
+                                        <h3 class="mt-0 mb-0"><strong>1.5k</strong></h3>
+                                        <p><small class="bc-description text-muted">Etudiants</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/Dashboard widget-->
+
+                <div class="row mt-3">
+                    <div class="col-sm-6">
+                        <!--Jvector world map-->
+                            <img src="assets/img/column-82 _main1200.jpeg" alt="" />
+                        <!--/Jvector world map-->
+
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--Main Content-->
+
+    </div>
+
+    <!--Page Wrapper-->
+
+    <!-- Page JavaScript Files-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <!--Popper JS-->
+    <script src="assets/js/popper.min.js"></script>
+    <!--Bootstrap-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--Sweet alert JS-->
+    <script src="assets/js/sweetalert.js"></script>
+    <!--Progressbar JS-->
+    <script src="assets/js/progressbar.min.js"></script>
+    <!--Flot.JS-->
+    <script src="assets/js/charts/jquery.flot.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.pie.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.categories.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.stack.min.js"></script>
+    <!--Chart JS-->
+    <script src="assets/js/charts/chart.min.js"></script>
+    <!--Chartist JS-->
+    <script src="assets/js/charts/chartist.min.js"></script>
+    <script src="assets/js/charts/chartist-data.js"></script>
+    <script src="assets/js/charts/demo.js"></script>
+    <!--Maps-->
+    <script src="assets/js/maps/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="assets/js/maps/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/js/maps/jvector-maps.js"></script>
+    <!--Bootstrap Calendar JS-->
+    <script src="assets/js/calendar/bootstrap_calendar.js"></script>
+    <script src="assets/js/calendar/demo.js"></script>
+    <!--Nice select-->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+
+    <!--Custom Js Script-->
+    <script src="assets/js/custom.js"></script>
+    <!--Custom Js Script-->
+    <script>
+        //Nice select
+        $('.bulk-actions').niceSelect();
+    </script>
+  </body>
+</html>
