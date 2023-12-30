@@ -15,7 +15,6 @@ create table DEPARTEMENT
 );
 
  /*Par suite on creera les clé étrangère après la creattion de toute les table c a d avec ALTER table ADD constraint fk_....*/
-);
 
 /*==============================================================*/
 /* Table: ENSEIGNANT                                            */
