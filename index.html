@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Scolarité</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('3433814.jpg') center/cover no-repeat; /* Ajout de l'image d'arrière-plan */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .animated {
+            animation: swing 2s; /* Ajout de l'animation swing */
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #495057;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="animate__animated" id="animatedContainer">
+            <h1>Bienvenue dans le système de gestion de scolarité</h1>
+            <p>Découvrez les fonctionnalités et suivez le parcours académique avec facilité.</p>
+            <a href="/PHPPROJECT/Authentification/dashboard.php" class="btn">Commencer</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var animatedContainer = document.getElementById('animatedContainer');
+            
+            animatedContainer.classList.add('animated');
+
+            animatedContainer.addEventListener('animationend', function () {
+                animatedContainer.classList.remove('animate__animated', 'animated', 'swing');
+            });
+        });
+    </script>
+</body>
+</html>
