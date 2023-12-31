@@ -2,7 +2,6 @@
 /* BD_MINI_PROJET       GESTION DE SCOLARITE                   */
 /* WITH II:BDCC , II:CCN, STUDENTS                    */
 /*==============================================================*/
-use gestion_de_scolarite;
 
 /*==============================================================*/
 /* Table: DEPARTEMENT                                           */
@@ -69,11 +68,11 @@ create table EVALUER
 /*==============================================================*/
 create table FILIERE
 (
-    ID_Filere            VARCHAR(100)         not null,
+    ID_Filiere            VARCHAR(100)         not null,
     ID_DEPARTEMENT       VARCHAR(100)         not null,
     NOM_FILIERE          VARCHAR(100),
     NIVEAU               VARCHAR(11),
-constraint PK_FILIERE primary key (ID_Filere)
+constraint PK_FILIERE primary key (ID_Filiere)
 );
 
 /*==============================================================*/
